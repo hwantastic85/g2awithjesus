@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>나는 어떻게 동행하고 있을까? | 예수동행 테스트</title>
-<!-- v39: 첫 화면 전단 교체 · SINGLE FILE -->
+<!-- v40: 첫 화면 동행 명함 안내 · SINGLE FILE -->
 <style>
 /*
 Copyright (c) 2021, Kil Hyung-jin (https://github.com/orioncactus/pretendard),
@@ -758,7 +758,8 @@ button:focus-visible,summary:focus-visible,.journalBtn:focus-visible{outline:3px
 #start .startVisual{width:min(740px,100%)}
 #start .start-art img{border:0;box-shadow:none}
 #start .startCopy{min-height:0;border:0;width:min(740px,100%)}
-#start .disclaimer{background:none;border:0;box-shadow:none;padding:0;margin:0 0 24px;font-size:clamp(20px,3vw,28px);line-height:1.5;font-weight:650}
+#start .disclaimer{background:none;border:0;box-shadow:none;padding:0;margin:0 0 8px;font-size:clamp(20px,3vw,28px);line-height:1.5;font-weight:650}
+.startOutcome{margin:0 0 20px;color:#444;font-size:clamp(16px,2.2vw,20px);line-height:1.5;word-break:keep-all}
 #start .startBtn{border:2px solid #111;border-radius:0;box-shadow:5px 5px 0 #111;background:#ffdf00;color:#111;font-size:24px;font-weight:750;padding:22px}
 #start .startBtn:hover{background:#ffd000;color:#111}
 .back{font-weight:700}
@@ -811,6 +812,7 @@ button:focus-visible,summary:focus-visible,.journalBtn:focus-visible{outline:3px
       <div></div>
       <div class="startBottom">
         <div class="disclaimer">이미 우리는 동행하고 있습니다. 예수님과!</div>
+        <p class="startOutcome"><span id="startQuestionCount"></span>문항에 답하면 <strong>내 동행 명함</strong>이 나와요.</p>
         <button class="startBtn" onclick="startQuiz()"><span>테스트 시작하기</span><span class="arrow">▶</span></button>
       </div>
     </div>
@@ -1826,6 +1828,7 @@ async function shareTest(){
  try{if(navigator.share)await navigator.share({title:'나의 예수동행 테스트',url:location.href});else {await navigator.clipboard.writeText(location.href);document.getElementById('saveStatus').textContent='테스트 링크를 복사했어요.'}}
  catch(e){if(e.name!=='AbortError')document.getElementById('saveStatus').textContent='주소창의 테스트 주소를 복사해서 공유해 주세요.'}
 }
+document.getElementById('startQuestionCount').textContent=QUESTIONS.length;
 </script>
 </body>
 </html>
